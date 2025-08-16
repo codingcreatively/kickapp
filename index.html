@@ -199,11 +199,6 @@
         referral: document.getElementById("referral").value
       };
 
-      if (!/^[\w.\-]+@[\w]+$/.test(data.upi)) {
-        alert("Please enter a valid UPI ID.");
-        return;
-      }
-
       if (!/^\d{10}$/.test(data.phone)) {
         alert("Please enter a valid 10-digit phone number.");
         return;
