@@ -232,18 +232,24 @@ const data = {
 
 fetch(scriptURL, {
   method: "POST",
-  headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded"
+  },
   body: new URLSearchParams(data),
 })
 .then(res => res.text())
 .then(response => {
-  document.getElementById("success-msg").innerText = "â Submitted! Redirecting...";
-  setTimeout(() => {
-    window.location.href = redirectURL;
-  }, 3000);
+  if (response.includes("success") || response.includes("Success")) {
+    document.getElementById("success-msg").innerText = "â Submitted! Redirecting...";
+    setTimeout(() => {
+      window.location.href = redirectURL;
+    }, 3000);
+  } else {
+    alert("â Submission failed. Response: " + response);
+  }
 })
-.catch(err => alert("Error: " + err.message)
-      }
-    });
+.catch(err => {
+  alert("â ï¸ Error: " + err.message);
+});
   </script></body>
 </html>
