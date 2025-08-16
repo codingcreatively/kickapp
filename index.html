@@ -224,27 +224,25 @@ body {
         return;
       }
 
-      const data = { upi, phone, referral };
+const data = {
+  upi: document.getElementById("upi").value.trim(),
+  phone: document.getElementById("phone").value.trim(),
+  referral: document.getElementById("referral").value,
+};
 
-      try {
-        const response = await fetch(scriptURL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-
-        if (result.result === "Success") {
-          document.getElementById("success-msg").innerText = "✅ Submitted! Redirecting...";
-          setTimeout(() => {
-            window.location.href = redirectURL;
-          }, 3000);
-        } else {
-          alert("Submission failed. Try again.");
-        }
-      } catch (err) {
-        alert("Error: " + err.message);
+fetch(scriptURL, {
+  method: "POST",
+  headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  body: new URLSearchParams(data),
+})
+.then(res => res.text())
+.then(response => {
+  document.getElementById("success-msg").innerText = "â Submitted! Redirecting...";
+  setTimeout(() => {
+    window.location.href = redirectURL;
+  }, 3000);
+})
+.catch(err => alert("Error: " + err.message)
       }
     });
   </script></body>
