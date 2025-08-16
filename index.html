@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,169 +11,150 @@
       padding: 0;
       box-sizing: border-box;
       font-family: 'Roboto', sans-serif;
-    }html, body {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 200%;
-  height: 200%;
-  background: repeating-linear-gradient(
-    -45deg,
-    rgba(0, 249, 255, 0.08) 0px,
-    rgba(0, 249, 255, 0.08) 2px,
-    transparent 2px,
-    transparent 6px
-  );
-  animation: moveLight 10s linear infinite;
-  z-index: -1;
-  opacity: 0.7;
-}
-
-@keyframes moveLight {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(-50%, -50%); }
-}
-
-body {
-  background-color: #0b182a;
-}
-
-#intro {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  color: white;
-  z-index: 10;
-  background: rgba(11, 24, 42, 0.9);
-}
-
-.spinner {
-  border: 6px solid rgba(255, 255, 255, 0.2);
-  border-top: 6px solid #00f9ff;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: spin 1s linear infinite;
-  margin-bottom: 20px;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-#intro h1 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.container {
-  display: none;
-  height: 100vh;
-  width: 100vw;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.form-box {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  max-width: 400px;
-  width: 100%;
-  text-align: center;
-  z-index: 11;
-  color: white;
-}
-
-.form-box img {
-  width: 70px;
-  margin-bottom: 15px;
-}
-
-.form-box h2 {
-  color: white;
-  margin-bottom: 10px;
-}
-
-.form-box input {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-}
-
-.form-box input::placeholder {
-  color: #ccc;
-}
-
-.form-box button {
-  background: linear-gradient(to right, #00f9ff, #2effc2);
-  border: none;
-  color: black;
-  padding: 12px 25px;
-  font-size: 16px;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-top: 10px;
-  width: 100%;
-  transition: all 0.3s ease;
-}
-
-.form-box button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0,201,255,0.4);
-}
-
-.info {
-  text-align: left;
-  font-size: 14px;
-  margin-top: 20px;
-  color: #ddd;
-}
-
-.info h4 {
-  margin: 15px 0 5px;
-  color: #fff;
-}
-
-.info ol, .info ul {
-  padding-left: 20px;
-}
-
-#success-msg {
-  margin-top: 10px;
-  color: #4cff7c;
-  font-weight: bold;
-}
-
+    }
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(
+        -45deg,
+        rgba(0, 249, 255, 0.08) 0px,
+        rgba(0, 249, 255, 0.08) 2px,
+        transparent 2px,
+        transparent 6px
+      );
+      animation: moveLight 10s linear infinite;
+      z-index: -1;
+      opacity: 0.7;
+    }
+    @keyframes moveLight {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-50%, -50%); }
+    }
+    body {
+      background-color: #0b182a;
+    }
+    #intro {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+      z-index: 10;
+      background: rgba(11, 24, 42, 0.9);
+    }
+    .spinner {
+      border: 6px solid rgba(255, 255, 255, 0.2);
+      border-top: 6px solid #00f9ff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    #intro h1 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .container {
+      display: none;
+      height: 100vh;
+      width: 100vw;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .form-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      z-index: 11;
+      color: white;
+    }
+    .form-box img {
+      width: 70px;
+      margin-bottom: 15px;
+    }
+    .form-box h2 {
+      color: white;
+      margin-bottom: 10px;
+    }
+    .form-box input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+    .form-box input::placeholder {
+      color: #ccc;
+    }
+    .form-box button {
+      background: linear-gradient(to right, #00f9ff, #2effc2);
+      border: none;
+      color: black;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+    .form-box button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0,201,255,0.4);
+    }
+    .info {
+      text-align: left;
+      font-size: 14px;
+      margin-top: 20px;
+      color: #ddd;
+    }
+    .info h4 {
+      margin: 15px 0 5px;
+      color: #fff;
+    }
+    .info ol, .info ul {
+      padding-left: 20px;
+    }
+    #success-msg {
+      margin-top: 10px;
+      color: #4cff7c;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
-  
   <div id="intro">
     <div class="spinner"></div>
     <h1>Loading your reward from KickCash...</h1>
-  </div>  <div class="container" id="mainContent">
+  </div>
+  <div class="container" id="mainContent">
     <div class="form-box">
       <img src="pic1.png" alt="pic1" />
       <h2>LootPic Demat</h2>
@@ -186,9 +168,9 @@ body {
       <div class="info">
         <h4>Steps To Avail Offer:</h4>
         <ol>
-          <li>Install & Register to get ₹1 tracked</li>
+          <li>Install & Register to get â¹1 tracked</li>
           <li>Complete eKYC with PAN & Aadhaar</li>
-          <li>Get ₹2 UPI Cashback</li>
+          <li>Get â¹2 UPI Cashback</li>
         </ol>
         <h4>Terms & Conditions:</h4>
         <ul>
@@ -197,7 +179,8 @@ body {
         </ul>
       </div>
     </div>
-  </div> <script>
+  </div>
+  <script>
     setTimeout(() => {
       document.getElementById("intro").style.display = "none";
       document.getElementById("mainContent").style.display = "flex";
@@ -207,49 +190,45 @@ body {
     const scriptURL = "https://script.google.com/macros/s/AKfycbxdHLN5qpzA28TRVjAKO5u7HT6WTlSNMptvmE9CqoiJytNkI-uSrhwEpLzftmbqfQU0BA/exec";
     const redirectURL = "https://play.google.com/store/apps/details?id=in.cashback.shopping.kickcash";
 
-    form.addEventListener("submit", async function (e) {
+    form.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      const upi = document.getElementById("upi").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-      const referral = document.getElementById("referral").value;
+      const data = {
+        upi: document.getElementById("upi").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        referral: document.getElementById("referral").value
+      };
 
-      if (!/^[\w.-]+@[\w]+$/.test(upi)) {
+      if (!/^[\w.\-]+@[\w]+$/.test(data.upi)) {
         alert("Please enter a valid UPI ID.");
         return;
       }
 
-      if (!/^\d{10}$/.test(phone)) {
+      if (!/^\d{10}$/.test(data.phone)) {
         alert("Please enter a valid 10-digit phone number.");
         return;
       }
 
-const data = {
-  upi: document.getElementById("upi").value.trim(),
-  phone: document.getElementById("phone").value.trim(),
-  referral: document.getElementById("referral").value,
-};
-
-fetch(scriptURL, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/x-www-form-urlencoded"
-  },
-  body: new URLSearchParams(data),
-})
-.then(res => res.text())
-.then(response => {
-  if (response.includes("success") || response.includes("Success")) {
-    document.getElementById("success-msg").innerText = "â Submitted! Redirecting...";
-    setTimeout(() => {
-      window.location.href = redirectURL;
-    }, 3000);
-  } else {
-    alert("â Submission failed. Response: " + response);
-  }
-})
-.catch(err => {
-  alert("â ï¸ Error: " + err.message);
-});
-  </script></body>
+      fetch(scriptURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(data),
+      })
+      .then(res => res.text())
+      .then(response => {
+        if (response.includes("success") || response.includes("Success")) {
+          document.getElementById("success-msg").innerText = "â Submitted! Redirecting...";
+          setTimeout(() => {
+            window.location.href = redirectURL;
+          }, 3000);
+        } else {
+          alert("â Submission failed. Response: " + response);
+        }
+      })
+      .catch(err => {
+        alert("â ï¸ Error: " + err.message);
+      });
+    });
+  </script>
+</body>
 </html>
