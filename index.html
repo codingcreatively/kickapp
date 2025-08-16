@@ -181,49 +181,42 @@
     </div>
   </div>
   <script>
-    setTimeout(() => {
-      document.getElementById("intro").style.display = "none";
-      document.getElementById("mainContent").style.display = "flex";
-    }, 3000);
+  setTimeout(() => {
+    document.getElementById("intro").style.display = "none";
+    document.getElementById("mainContent").style.display = "flex";
+  }, 3000);
 
-    const form = document.getElementById("form");
-    const scriptURL = "https://script.google.com/macros/s/AKfycbxdHLN5qpzA28TRVjAKO5u7HT6WTlSNMptvmE9CqoiJytNkI-uSrhwEpLzftmbqfQU0BA/exec";
-    const redirectURL = "https://play.google.com/store/apps/details?id=in.cashback.shopping.kickcash";
+  const form = document.getElementById("form");
+  const scriptURL = "https://script.google.com/macros/s/AKfycbxdHLN5qpzA28TRVjAKO5u7HT6WTlSNMptvmE9CqoiJytNkI-uSrhwEpLzftmbqfQU0BA/exec";
+  const redirectURL = "https://play.google.com/store/apps/details?id=in.cashback.shopping.kickcash";
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-      const data = {
-        upi: document.getElementById("upi").value.trim(),
-        phone: document.getElementById("phone").value.trim(),
-        referral: document.getElementById("referral").value
-      };
+    const data = {
+      upi: document.getElementById("upi").value.trim(),
+      phone: document.getElementById("phone").value.trim(),
+      referral: document.getElementById("referral").value
+    };
 
-      if (!/^\d{10}$/.test(data.phone)) {
-        alert("Please enter a valid 10-digit phone number.");
-        return;
-      }
+    // Show success message immediately
+    document.getElementById("success-msg").innerText = "â Submitted! Redirecting...";
 
-      fetch(scriptURL, {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(data),
-      })
-      .then(res => res.text())
-      .then(response => {
-        if (response.includes("success") || response.includes("Success")) {
-          document.getElementById("success-msg").innerText = "â Submitted! Redirecting...";
-          setTimeout(() => {
-            window.location.href = redirectURL;
-          }, 3000);
-        } else {
-          alert("â Submission failed. Response: " + response);
-        }
-      })
-      .catch(err => {
-        alert("â ï¸ Error: " + err.message);
-      });
+    // Send data to Google Sheet
+    fetch(scriptURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    }).catch((error) => {
+      // Ignore fetch error â user still redirects
+      console.warn("Sheet error:", error.message);
     });
-  </script>
+
+    // Redirect after short delay (even if sheet fails)
+    setTimeout(() => {
+      window.location.href = redirectURL;
+    }, 2000);
+  });
+</script>
 </body>
 </html>
